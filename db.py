@@ -1,6 +1,6 @@
 import os
 
-from sqlalchemy import JSON, Integer
+from sqlalchemy import JSON, Integer, String
 from sqlalchemy.ext.asyncio import AsyncAttrs, async_sessionmaker, create_async_engine
 from sqlalchemy.orm import DeclarativeBase, MappedColumn, mapped_column
 
@@ -23,7 +23,15 @@ class SwapiPeople(Base):
     __tablename__ = "swapi"
 
     id: MappedColumn[int] = mapped_column(Integer, primary_key=True)
-    json: MappedColumn[dict] = mapped_column(JSON)
+    #json: MappedColumn[dict] = mapped_column(JSON)
+    birth_year: MappedColumn[str] = mapped_column(String(30))
+    eye_color: MappedColumn[str] = mapped_column(String(30))
+    gender: MappedColumn[str] = mapped_column(String(30))
+    hair_color: MappedColumn[str] = mapped_column(String(30))
+    homeworld: MappedColumn[str] = mapped_column(String(255))
+    mass: MappedColumn[str] = mapped_column(String(255))
+    name: MappedColumn[str] = mapped_column(String(255))
+    skin_color: MappedColumn[str] = mapped_column(String(30))
 
 
 async def init_orm():
